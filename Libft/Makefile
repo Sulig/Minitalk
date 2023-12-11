@@ -22,7 +22,7 @@ MAK = Makefile
 LIB = libft.h
 
 SRC = ft_atoi.c ft_calloc.c ft_itoa.c ft_printf.c ft_switch_cast.c get_next_line.c\
-	  ft_is_prime.c
+	  ft_is_prime.c ft_atoi_base.c
 
 SRC += $(STR)ft_split.c $(STR)ft_strchr.c $(STR)ft_strcpy.c $(STR)ft_strjoin.c\
 	   $(STR)ft_strcut.c $(STR)ft_strlen.c $(STR)ft_strstr.c $(STR)ft_strtrim.c\

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:29:20 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:05:01 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:05:24 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ static char	*ft_strnext(const char *str, char *to_fill, size_t pos)
 }
 
 /*
- * Pass the position of where you want to integrate
- * the inter in str.
- * Return the str + the inter in position of str
- * if str is NULL, return a strdup of inter
- * if inter is NULL, return a strdup of str 
+ * Pass the position of where you want to integrate the *inter in *str.
+ * Return the str + *inter
+ * if *str is NULL, return a strdup of *inter
+ * if *inter is NULL, return a strdup of *str
 */
 char	*ft_strinter(const char *str, const char *inter, size_t pos)
 {

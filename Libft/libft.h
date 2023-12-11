@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/05 12:17:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:27:03 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_is_prime(size_t num);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 size_t	ft_atos(const char *str);
+int		ft_atoi_base(const char *str, int base);
 char	*ft_itoa(int n);
 char	*ft_itoa_unsig(size_t n, char *base);
 char	*ft_unsig_tobase(size_t num, char base);
@@ -65,6 +66,7 @@ char	*ft_strinter(const char *str, const char *inter, size_t pos);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strjoin_s(const char *s1, const char *s2);
 char	*ft_strjoin_free_first(char *s1, const char *s2);
+char	*ft_strjoin_free_snd(const char *s1, char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char*s, unsigned int start, size_t len);
 
