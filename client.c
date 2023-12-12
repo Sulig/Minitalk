@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:37:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/11 20:39:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:22:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_print_binary(char *mess)
 	i = 0;
 	while (mess[i])
 	{
-		bin = ft_unsig_tobase(mess[i], 'x');
+		bin = ft_unsig_tobase(mess[i], 'b');
 		while (ft_strlen(bin) < 8)
 			bin = ft_strjoin_free_snd("0", bin);
 		if (bin)
@@ -64,6 +64,7 @@ int	main(int argc, char **args)
 		exit(1);
 	}
 	pid = ft_atoi(args[1]);
-	ft_print_binary(args[2]);
+	if (kill(pid, SIGUSR1) == -1)
+		ft_printf("\033[1;31mWrong PID\n");
 	return (0);
 }
