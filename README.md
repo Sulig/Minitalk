@@ -1,6 +1,6 @@
 # Minitalk
 
-~ Started on: 04/12 ~ *** ~ Ended on: **Work in Progress**
+~ Started on: 04/12/2023 ~ *** ~ Ended on: **Work in Progress**
 
 ***
 ## Resumen: 
