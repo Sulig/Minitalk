@@ -10,11 +10,29 @@ datos utilizando señales UNIX.
 ***
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
+- Minitalk sin soporte Unicode
+- Minitalk Bonus *En processo*
 - Subject
 
 ***
 ## Comandos Esenciales:
 
+Make client & server
+
+    make all
+
+Make client_bonus & server_bonus
+
+    make bonus
+
+
+Clean all & clear window
+
+    make clear
+
+For more comands ejecute
+
+    make help
 
 ***
 ~ Made by sadoming ~ 
