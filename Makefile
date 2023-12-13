@@ -6,12 +6,15 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:16:14 by sadoming          #+#    #+#              #
-#    Updated: 2023/12/13 14:33:13 by sadoming         ###   ########.fr        #
+#    Updated: 2023/12/13 19:20:57 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1 = client
 NAME2 = server
+
+BONUS1 = client_bonus
+BONUS2 = server_bonus
 
 DEF = 10959 "h"
 # ------------------ #
@@ -24,6 +27,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 DIR1 = ./src
 DIR2 = ./src
+
+DIRB1 = ./bonus
+DIRB2 = ./bonus
+
 LIBFT = ./Libft
 # ------------------- #
 # Sorces:
@@ -33,13 +40,21 @@ MAK = Makefile
 ARL = $(LIBFT)/libft.a
 
 SRC1 = client
-SRC2 = server 
+SRC2 = server
+
+SRCB1 = client_bonus
+SRCB2 = server_bonus
 
 OBJ1 = $(addprefix $(DIR1)/, $(addsuffix .o, $(SRC1)))
 OBJ2 = $(addprefix $(DIR2)/, $(addsuffix .o, $(SRC2)))
+
+OBJB1 = $(addprefix $(DIRB1)/, $(addsuffix .o, $(SRCB1)))
+OBJB2 = $(addprefix $(DIRB2)/, $(addsuffix .o, $(SRCB2)))
 # ******************************************************************************* #
 #-------------------------------------------------------------#
 all: $(NAME1) $(NAME2)
+
+bonus: $(BONUS1) $(BONUS2)
 #-------------------------------------------------------------#
 #-------------------------------------------------------------#
 help:
@@ -49,7 +64,6 @@ help:
 	@echo "\t~ fclean \t #-> Clean all\n"
 	@echo "\t~ clear \t #-> Clean all & clear\n"
 	@echo "\t~ norm \t\t #-> Run norminette\n"
-	@echo "\t~ run_client \t #-> Run $(NAME1) with $(DEF)\n"
 	@echo "\t~ trueall \t #-> Make norm + make all\n"
 	@echo "\t~ re   \t\t #-> Redo $(NAME1) & $(NAME2)\n"
 	@echo "\t~ re_trueall \t #-> Redo & make trueall\n"
@@ -73,6 +87,8 @@ trueall:
 	@echo "\033[0;37m\n~ **************************************** ~\n"
 	@make -s $(NAME1)
 	@make -s $(NAME2)
+	@make -s $(BONUS1)
+	@make -s $(BONUS2)
 
 #-------------------------------------------------------------#
 norm:
@@ -82,14 +98,6 @@ norm:
 	@norminette -R CheckForbiddenSourceHeader
 	@echo "\033[1;32m\n ~ Norminette:\t~ OK\n"
 	@echo "~~~~~~~~~~~~~~~~~~~~~~\n"
-#-------------------------------------------------------------#
-#-------------------------------------------------------------#
-run_client: $(NAME)
-	@echo "\033[1;34m\n~ **************************************** ~\n"
-	@echo " ~ Running ./$(NAME1) $(DEF)"
-	@echo "\n~ **************************************** ~ \033[1;37m\n"
-	@./$(NAME1) $(DEF)
-#-------------------------------------------------------------#
 #-------------------------------------------------------------#
 # ******************************************************************************* #
 # Compiling Region:
@@ -127,6 +135,33 @@ $(NAME2): $(MAK) $(ARL) $(OBJ2)
 	@echo "~ **************************************** ~\033[1;37m\n"
 #-------------------------------------------------------------#
 #-------------------------------------------------------------#
+#### BONUS ####
+# Client_bonus:
+
+$(DIRB1)/%.o: $(DIRB1)/%.c $(MAK)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BONUS1): $(MAK) $(ARL) $(OBJB1)
+	@echo "\033[1;37m\n~ **************************************** ~\n"
+	@echo "\033[1;93m * Making $(BONUS1) -->\033[1;97m\n"
+	@$(CC) $(ARL) $(OBJB1) -o $(BONUS1)
+	@echo "\033[1;35m\n~ **************************************** ~\n"
+	@echo "  ~\t Client_bonus is ready!\t         ~\n"
+	@echo "~ **************************************** ~\033[1;37m\n"
+#-------------------------------------------------------------#
+# Server_bonus:
+
+$(DIRB2)/%.o: $(DIRB2)/%.c $(MAK)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BONUS2): $(MAK) $(ARL) $(OBJB2)
+	@echo "\033[1;37m\n~ **************************************** ~\n"
+	@echo "\033[1;93m * Making $(BONUS2) -->\033[1;97m\n"
+	@$(CC) $(ARL) $(OBJB2) -o $(BONUS2)
+	@echo "\033[1;35m\n~ **************************************** ~\n"
+	@echo "  ~\t Server_bonus is ready!\t         ~\n"
+	@echo "~ **************************************** ~\033[1;37m\n"
+#-------------------------------------------------------------#
 # ******************************************************************************* #
 # Debuging region:
 
@@ -163,6 +198,8 @@ clean:
 	@make -s clean -C $(LIBFT)
 	@/bin/rm -f $(OBJ1)
 	@/bin/rm -f $(OBJ2)
+	@/bin/rm -f $(OBJB1)
+	@/bin/rm -f $(OBJB2)
 	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
 
 
@@ -170,6 +207,8 @@ fclean: clean
 	@make -s fclean -C $(LIBFT)
 	@/bin/rm -f $(NAME1)
 	@/bin/rm -f $(NAME2)
+	@/bin/rm -f $(BONUS1)
+	@/bin/rm -f $(BONUS2)
 	@find . -name ".DS_Store" -type f -delete
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
@@ -179,5 +218,6 @@ clear: fclean
 re: fclean all
 re_trueall: clear trueall
 # -------------------- #
-.PHONY: all autor clean clear fclean norm re trueall
+.PHONY: all autor bonus clean clear fclean norm re re_trueall trueall
+.PHONY: help debug_client debug_server leaks_client leaks_server
 # ********************************************************************************** #
