@@ -6,14 +6,14 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:16:14 by sadoming          #+#    #+#              #
-#    Updated: 2023/12/12 15:22:43 by sadoming         ###   ########.fr        #
+#    Updated: 2023/12/13 14:33:13 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1 = client
 NAME2 = server
 
-DEF = 444 "h"
+DEF = 10959 "h"
 # ------------------ #
 # Flags:
 
@@ -22,8 +22,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:
 
-DIR1 = ./
-DIR2 = ./
+DIR1 = ./src
+DIR2 = ./src
 LIBFT = ./Libft
 # ------------------- #
 # Sorces:
@@ -55,6 +55,9 @@ help:
 	@echo "\t~ re_trueall \t #-> Redo & make trueall\n"
 	@echo "\n~ Extra comands:\n"
 	@echo "\t~ debug_client \t #-> Ejecutes lldb $(NAME1) $(DEF)\n"
+	@echo "\t~ debug_server \t #-> Ejecutes lldb $(NAME2)\n"
+	@echo "\t~ leaks_client \t #-> Ejecutes leaks $(NAME1) $(DEF)\n"
+	@echo "\t~ leaks_server \t #-> Ejecutes leaks $(NAME2)\n"
 	@make -s author
 
 #-------------------------------------------------------------#
@@ -132,6 +135,26 @@ debug_client: $(NAME1)
 	@echo " ~ Running ./$(NAME1) $(DEF)"
 	@echo "\n~ **************************************** ~\n"
 	@lldb $(NAME1) $(DEF)
+
+debug_server: $(NAME2)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME2)"
+	@echo "\n~ **************************************** ~\n"
+	@lldb $(NAME2)
+
+# ------------------
+
+leaks_client: $(NAME1)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME1) $(DEF)"
+	@echo "\n~ **************************************** ~\n"
+	@leaks -atExit -- ./$(NAME1) $(DEF)
+
+leaks_server: $(NAME2)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME2)"
+	@echo "\n~ **************************************** ~\n"
+	@leaks -atExit -- ./$(NAME2)
 #-------------------------------------------------------------#
 # ******************************************************************************* #
 # Clean region

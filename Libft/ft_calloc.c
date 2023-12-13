@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:30:06 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/21 17:33:09 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:23:34 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	cnt;
 	char	*dest;
 
 	dest = (char *) s;
-	cnt = 0;
-	while (cnt < n)
-	{
-		dest[cnt] = '\0';
-		cnt++;
-	}
+	while (n--)
+		dest[n] = '\0';
 }
 
 void	*ft_calloc(size_t count, size_t size)

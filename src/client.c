@@ -6,15 +6,34 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:37:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/12 15:22:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:33:08 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h> 
 #include <signal.h>
-#include "./Libft/libft.h"
+#include "../Libft/libft.h"
 
-void	ft_print_binary(char *mess)
+static int	ft_send_bits(char *bin, int pid)
+{
+	size_t	i;
+
+	i = 0;
+	while (bin[i])
+	{
+		if (bin[i] == '0')
+			if (kill(pid, SIGUSR1) == -1)
+				return (0);
+		if (bin[i] == '1')
+			if (kill(pid, SIGUSR2) == -1)
+				return (0);
+		usleep(50);
+		i++;
+	}
+	return (1);
+}
+
+static int	ft_send_str(char *mess, int pid)
 {
 	size_t	i;
 	char	*bin;
@@ -23,15 +42,20 @@ void	ft_print_binary(char *mess)
 	while (mess[i])
 	{
 		bin = ft_unsig_tobase(mess[i], 'b');
+		if (!bin)
+			return (0);
 		while (ft_strlen(bin) < 8)
 			bin = ft_strjoin_free_snd("0", bin);
-		if (bin)
+		if (!ft_send_bits(bin, pid))
 		{
-			ft_printf("Sending char...\n%s\n", bin);
 			free(bin);
+			return (0);
 		}
+		free(bin);
+		usleep(50);
 		i++;
 	}
+	return (1);
 }
 
 static int	ft_is_all_num(char *str)
@@ -64,7 +88,7 @@ int	main(int argc, char **args)
 		exit(1);
 	}
 	pid = ft_atoi(args[1]);
-	if (kill(pid, SIGUSR1) == -1)
+	if (!ft_send_str(args[2], pid))
 		ft_printf("\033[1;31mWrong PID\n");
 	return (0);
 }
