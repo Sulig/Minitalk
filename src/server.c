@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:52:42 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/13 18:34:29 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:22:13 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	ft_print_sig(int sig)
 	static int	bit = 0;
 
 	if (bit == 0)
-		ft_bzero(bin, 8);
-	if (sig == SIGUSR1)
-		bin[bit] = '0';
-	else if (sig == SIGUSR2)
+		ft_memcpy(bin, "00000000", 8);
+	if (sig == SIGUSR2)
 		bin[bit] = '1';
 	bit++;
 	if (bit == 8)

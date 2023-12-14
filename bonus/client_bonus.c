@@ -6,18 +6,18 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:39:28 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/13 20:50:42 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:52:32 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h> 
+//#include <sys/types.h> 
 #include <signal.h>
 #include "../Libft/libft.h"
 
 static int	ft_send_bits(char c, int pid)
 {
 	size_t	i;
-	int		bit;
+	size_t	bit;
 
 	i = 8;
 	while (i--)
@@ -39,6 +39,11 @@ static int	ft_send_str(char *mess, int pid)
 	size_t	i;
 
 	i = 0;
+	if (!mess || !ft_strllen(mess))
+	{
+		ft_printf("Nothing to send\n");
+		exit(1);
+	}
 	while (mess[i])
 	{
 		if (!ft_send_bits(mess[i], pid))
@@ -46,7 +51,22 @@ static int	ft_send_str(char *mess, int pid)
 		usleep(50);
 		i++;
 	}
+	ft_send_bits('\0', pid);
 	return (1);
+}
+
+static void	ft_confirm(int sig)
+{
+	static size_t	bits;
+
+	if (sig == SIGUSR2)
+		bits++;
+	else if (sig == SIGUSR1)
+	{
+		bits -= 8;
+		ft_printf("Sended %u bits\n", bits);
+		exit(0);
+	}
 }
 
 static int	ft_is_all_num(char *str)
@@ -79,7 +99,14 @@ int	main(int argc, char **args)
 		exit(1);
 	}
 	pid = ft_atoi(args[1]);
+	signal(SIGUSR1, ft_confirm);
+	signal(SIGUSR2, ft_confirm);
 	if (!ft_send_str(args[2], pid))
+	{
 		ft_printf("\033[1;31mWrong PID\n");
+		exit(1);
+	}
+	while (1)
+		pause();
 	return (0);
 }

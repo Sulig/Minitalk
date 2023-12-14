@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:16:14 by sadoming          #+#    #+#              #
-#    Updated: 2023/12/13 20:50:46 by sadoming         ###   ########.fr        #
+#    Updated: 2023/12/14 19:52:59 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -216,8 +216,9 @@ clear: fclean
 	@clear
 
 re: fclean all
+re_bonus: fclean bonus
 re_trueall: clear trueall
 # -------------------- #
 .PHONY: all autor bonus clean clear fclean norm re re_trueall trueall
-.PHONY: help debug_client debug_server leaks_client leaks_server
+.PHONY: help debug_client debug_server leaks_client leaks_server re_bonus
 # ********************************************************************************** #
