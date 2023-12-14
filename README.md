@@ -1,6 +1,6 @@
 # Minitalk
 
-~ Started on: 04/12/2023 ~ *** ~ Ended on: **Work in Progress**
+~ Started on: 04/12/2023 ~ *** ~ Ended on: 14/12/2023 and Waiting for grade.
 
 ***
 ## Resumen: 
@@ -11,8 +11,9 @@ datos utilizando señales UNIX.
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
 - Minitalk sin soporte Unicode
-- Minitalk Bonus *En processo*
-- Subject
+- Minitalk Bonus
+- [Wiki & Guia](https://github.com/Sulig/Minitalk/wiki)
+- [Subject](https://github.com/Sulig/Minitalk/blob/master/Minitalk.pdf)
 
 ***
 ## Comandos Esenciales:
