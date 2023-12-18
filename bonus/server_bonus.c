@@ -6,10 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:34:44 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/14 18:50:24 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:40:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
 #include <signal.h>
 #include "../Libft/libft.h"
 

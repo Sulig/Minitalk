@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:39:28 by sadoming          #+#    #+#             */
-/*   Updated: 2023/12/14 19:52:32 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:40:52 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <sys/types.h> 
+#include <sys/types.h>
 #include <signal.h>
 #include "../Libft/libft.h"
 
@@ -60,7 +60,10 @@ static void	ft_confirm(int sig)
 	static size_t	bits;
 
 	if (sig == SIGUSR2)
+	{
 		bits++;
+		usleep(50);
+	}
 	else if (sig == SIGUSR1)
 	{
 		bits -= 8;
