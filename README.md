@@ -14,8 +14,7 @@ datos utilizando señales UNIX.
 ***
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
-- Minitalk sin soporte Unicode
-- Minitalk Bonus
+- Minitalk Basico + Bonus
 - [Wiki & Guia](https://github.com/Sulig/Minitalk/wiki)
 - [Subject](https://github.com/Sulig/Minitalk/blob/master/Minitalk.pdf)
 
