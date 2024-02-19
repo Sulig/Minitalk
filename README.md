@@ -16,7 +16,7 @@ datos utilizando señales UNIX.
 - Libft + ft_printf + GetNextLine
 - Minitalk Basico + Bonus
 - [Wiki & Guia](https://github.com/Sulig/Minitalk/wiki)
-- [Subject](https://github.com/Sulig/Minitalk/blob/master/Minitalk.pdf)
+- [Subject ES](https://github.com/Sulig/Minitalk/blob/master/Minitalk.pdf)
 
 ***
 ## Comandos Esenciales:
